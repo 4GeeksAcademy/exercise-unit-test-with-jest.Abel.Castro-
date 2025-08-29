@@ -1,3 +1,9 @@
+let oneEuroIs = {
+    "JPY": 156.5, // japan yen
+    "USD": 1.07, // us dollar
+    "GBP": 0.87, // british pound
+}
+
 test("One euro should be 1.07 dollars", function() {
     
     const { fromEuroToDollar } = require('./app.js');
@@ -20,7 +26,7 @@ test("One Dollar should be 92,06 yens", function() {
     const yens= fromDollarToYen(5.5);
 
    
-    const expected = 5.5 /1.07 * 156.5;
+    const expected = 5.5 * oneEuroIs["JPY"] / oneEuroIs["USD"];
 
     
     expect(yens).toBeCloseTo(expected); 
@@ -34,8 +40,7 @@ test("One yen should be 0,0056 pounds", function() {
     const pounds = fromYenToPound(7.4);
 
     
-    const expected = 7.4 /156.5 * 0.87;
-
+    const expected = 7.4 / oneEuroIs["JPY"] * oneEuroIs["GBP"];
    
     expect(pounds).toBeCloseTo(expected); 
 })
